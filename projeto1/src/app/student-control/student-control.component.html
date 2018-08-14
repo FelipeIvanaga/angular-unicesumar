@@ -1,0 +1,56 @@
+<div class="container">
+
+  <div class="jumbotron">
+    <h1>Controle de Estudantes</h1>
+    <p>Controle de estudantes</p>
+  </div>
+
+  <div class="row">
+    <div class="card col-6">
+      <div class="card-header">Cadastrar novo</div>
+      <div class="card-body">
+        <form class="col-sm-12" (submit)="onSubmit()">
+          <div class="form-group">
+            <label for="student_ra">RA:</label>
+            <input type="text" class="form-control" id="student_ra" name="student_ra" [(ngModel)]="student_ra">
+          </div>
+          <div class="form-group">
+            <label for="student_nome">Nome:</label>
+            <input type="text" class="form-control" id="student_nome" name="student_nome" [(ngModel)]="student_nome">
+          </div>
+          <div class="form-group">
+            <label for="student_email">Email:</label>
+            <input type="email" class="form-control" id="student_email" name="student_email" [(ngModel)]="student_email">
+          </div>
+          <button type="submit" class="btn btn-primary">Salvar</button>
+          <button type="reset" class="btn btn-default">Cancelar</button>
+        </form>
+      </div>
+    </div>
+  
+
+
+    <div class="card col-6">
+      <div class="card-header">Lista de estudantes</div>
+
+      <table class="table table-hover">
+
+        <thead>
+          <th>RA</th>
+          <th>Nome</th>
+          <th>Email</th>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let e of listStudent">
+            <td>{{ e.ra }}</td>
+            <td>{{ e.nome }}</td>
+            <td>{{ e.email }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+  </div>
+</div>
