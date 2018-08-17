@@ -1,0 +1,67 @@
+<div class="jumbotron">
+  <h1>Produtos</h1>
+  <p>Gestão de produtos</p>
+</div>
+<div class="row">
+
+  <div class="card col-6">
+    <div class="card-header">Cadastrar novo</div>
+    <div class="card-body">
+      <form class="col-sm-12" (submit)="onSubmit()">
+
+        <div class="form-group">
+          <label for="productBrand">Marca</label>
+          <input type="text" class="form-control" id="productBrand" name="productBrand" [(ngModel)]="productBrand" >
+        </div>
+
+        <div class="form-group">
+          <label for="productModel">Modelo</label>
+          <input type="text" class="form-control" id="productModel" name="productModel" [(ngModel)]="productModel" >
+        </div>
+
+        <div class="form-group">
+          <label for="productPrice">Preço</label>
+          <input type="text" class="form-control" id="productPrice" name="productPrice" [(ngModel)]="productPrice" >
+        </div>
+
+        <div class="form-group">
+          <label for="productWeight">Peso</label>
+          <input type="text" class="form-control" id="productWeight" name="productWeight" [(ngModel)]="productWeight" >
+        </div>
+
+        <div class="form-group">
+          <label for="productType">Tipo</label>
+          <input type="text" class="form-control" id="productType" name="productType" [(ngModel)]="productType" >
+        </div>
+
+        <button type="submit" class="btn btn-primary">Salvar</button>
+        <button type="reset" class="btn btn-default">Cancelar</button>
+
+      </form>
+    </div>
+  </div>
+
+  <div class="card col-6">
+    <div class="card-header">Lista de Produtos</div>
+    <div class="card-body">
+      <table class="table table-hover">
+        <thead>
+          <th>Marca</th>
+          <th>Modelo</th>
+          <th>Preço</th>
+          <th>Peso</th>
+          <th>Tipo</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let e of listProduct"> 
+            <td>{{ e.brand }} </td>
+            <td>{{ e.model }} </td>
+            <td>{{ e.price }} </td>
+            <td>{{ e.weight }} </td>
+            <td>{{ e.type }} </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
