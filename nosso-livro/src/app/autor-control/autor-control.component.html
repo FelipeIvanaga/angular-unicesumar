@@ -1,0 +1,68 @@
+<div class="card">
+  <div class="card-header">
+    Cadastro de Autores
+    <button class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">Adicionar</button>
+  </div>
+  <div class="card-body">
+
+    <table class="table table-hover">
+      <thead class="thead-dark">
+        <th>Nome</th>
+        <th>Abreviação</th>
+        <th>Email</th>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let a of lista_autor | async">
+          <td>{{ a.nome }}</td>
+          <td>{{ a.abreviacao }}</td>
+          <td>{{ a.email }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+
+
+<!--Modal adicionar-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" [ngStyle]="{'display' : display}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+      <form method="post" (submit)="onSubmit()">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Nova Autor</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+
+          <div class="form-group">
+            <label for="new_nome">Nome: </label>
+            <input type="text" class="form-control" id="new_nome" name="new_nome" [(ngModel)]="nome">
+          </div>
+
+          <div class="form-group">
+            <label for="new_nome_abreviacao">Abreviação: </label>
+            <input type="text" class="form-control" id="new_nome_abreviacao" name="new_nome_abreviacao" [(ngModel)]="nome_abreviacao">
+          </div>
+
+          <div class="form-group">
+            <label for="new_email">Email: </label>
+            <input type="email" class="form-control" id="new_email" name="new_email" [(ngModel)]="email">
+          </div>
+
+        </div>
+
+        <div class="modal-footer">
+          <button type="reset" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Salvar</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,61 @@
+<div class="card">
+  <div class="card-header">
+    Cadastro de Categorias
+    <button class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">Adicionar</button>
+  </div>
+  <div class="card-body">
+
+    <table class="table table-hover">
+      <thead class="thead-dark">
+        <th>Categoria</th>
+        <th>Descrição</th>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let c of lista_categoria | async">
+          <td>{{ c.categoria }}</td>
+          <td>{{ c.descricao }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+
+
+<!--Modal adicionar-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" [ngStyle]="{'display' : display}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+      <form method="post" (submit)="onSubmit()">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Nova Categoria</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+
+          <div class="form-group">
+            <label for="new_nome_categoria">Nome da Categoria: </label>
+            <input type="text" class="form-control" id="new_nome_categoria" name="new_nome_categoria" [(ngModel)]="nome_categoria">
+          </div>
+
+          <div class="form-group">
+            <label for="new_decricao">Descrição: </label>
+            <input type="text" class="form-control" id="new_descricao" name="new_descricao" [(ngModel)]="descricao">
+          </div>
+
+        </div>
+
+        <div class="modal-footer">
+          <button type="reset" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Salvar</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>

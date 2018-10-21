@@ -1,0 +1,70 @@
+<div class="card">
+  <div class="card-header" style="font-size: 2em">
+    Médicos
+
+    <button type="button" class="btn btn-primary float-right" (click)="openModal()">
+      Novo
+    </button>
+  </div>
+  <div class="card-body">
+
+    <table class="table table-hover">
+      <thead class="thead-dark">
+        <th>CRM</th>
+        <th>Nome</th>
+        <th>Especialidade</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let m of listMedico | async">
+          <td>{{ m.crm }} </td>
+          <td>{{ m.nome }} </td>
+          <td>{{ m.especialidade }} </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+
+
+<!-- Modal para Novo Medico-->
+<div class="modal" id="newMedico" [ngStyle]="{'display':exibir}">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Nova Categoria</h4>
+        <button type="button" class="close" (click)="closeModal()">&times;</button>
+      </div>
+
+      <!-- Passo 04 - Indicar o método e o nome do formumlario -->
+      <form name="autorForm" (submit)="onSubmit()">
+        <!-- Modal Body -->
+        <div class="modal-body">
+            <div class="form-group">
+
+                <label for="crm">CRM</label>
+                <input type="text" class="form-control" id="crm" name="crm" [(ngModel)]="crm">
+        
+                <label for="nome">Nome</label>
+                <input type="text" class="form-control" id="nome" name="nome" [(ngModel)]="nome">
+        
+                <label for="especialidade">Especialidade</label>
+                <input type="text" class="form-control" id="especialidade" name="especialidade" [(ngModel)]="especialidade">
+        
+        
+              </div>
+        </div>
+
+        <!-- Modal Footer -->
+        <div class="modal-footer">
+          <!-- Passo 05 - No class adicionar o id btnSalvar -->
+          <button type="submit" class="btn btn-primary">Salvar</button>
+          <button type="button" class="btn btn-default" (click)="closeModal()">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- Fim Modal -->

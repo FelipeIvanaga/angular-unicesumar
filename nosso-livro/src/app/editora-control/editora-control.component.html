@@ -1,0 +1,68 @@
+<div class="card">
+  <div class="card-header">
+    Cadastro de Editoras
+    <button class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">Adicionar</button>
+  </div>
+  <div class="card-body">
+
+    <table class="table table-hover">
+      <thead class="thead-dark">
+        <th>Nome</th>
+        <th>CNPJ</th>
+        <th>Cidade</th>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let e of lista_editora | async">
+          <td>{{ e.nome }}</td>
+          <td>{{ e.cnpj }}</td>
+          <td>{{ e.cidade }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+
+
+<!--Modal adicionar-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" [ngStyle]="{'display' : display}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+      <form method="post" (submit)="onSubmit()">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Nova Editora</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+
+          <div class="form-group">
+            <label for="new_cnpj">CNPJ: </label>
+            <input type="text" class="form-control" id="new_cnpj" name="new_cnpj" [(ngModel)]="cnpj">
+          </div>
+
+          <div class="form-group">
+            <label for="new_nome_fantasia">Nome fantasia: </label>
+            <input type="text" class="form-control" id="new_nome_fantasia" name="new_nome_fantasia" [(ngModel)]="nome_fantasia">
+          </div>
+
+          <div class="form-group">
+            <label for="new_cidade">Cidade: </label>
+            <input type="text" class="form-control" id="new_cidade" name="new_cidade" [(ngModel)]="cidade">
+          </div>
+
+        </div>
+
+        <div class="modal-footer">
+          <button type="reset" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Salvar</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
